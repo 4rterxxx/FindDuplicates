@@ -17,7 +17,7 @@ void FileAnalyzer::exec() {
 }
 
 bool FileAnalyzer::compare_bin_files(std::string first_file_s, std::string second_file_s) {
-    char a, b;
+    char first_symb, second_symb;
     bool result = true;
 
     std::ifstream first_file;
@@ -26,15 +26,15 @@ bool FileAnalyzer::compare_bin_files(std::string first_file_s, std::string secon
     std::ifstream second_file;
     second_file.open(second_file_s, std::ios::binary);
 
-    while (first_file.get(a) && second_file.get(b)) {
-        if (a != b) {
+    while (first_file.get(first_symb) && second_file.get(second_symb)) {
+        if (first_symb != second_symb) {
             result = false;
             break;
         }
     }
     
-    if (first_file.get(a)) result = false;
-    if (second_file.get(b)) result = false;
+    if (first_file.get(first_symb)) result = false;
+    if (second_file.get(second_symb)) result = false;
     
     first_file.close();
     second_file.close();
