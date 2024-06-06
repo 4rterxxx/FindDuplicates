@@ -7,32 +7,26 @@
 #include <unordered_set>
 #include <boost/filesystem.hpp>
 #include <fstream>
-#include <exception>
+
 
 class FileAnalyzer {
+
+private:
+	boost::filesystem::path first_directory;
+
+	boost::filesystem::path second_directory;
+
 public:
 	FileAnalyzer() = delete;
 
-	FileAnalyzer(std::string path_1, std::string path_2);
+	FileAnalyzer(std::string first_path, std::string second_path);
 
-	void exec();
+	void print_vector_of_duplicates();
 
-private:
-	void compare_files();
+	std::vector<std::vector<std::string>> get_duplicates(std::vector<std::string>& filenames);
 
-	void find_duplicates_in_dir(boost::filesystem::path path_to_file, boost::filesystem::path path_to_dir);
+	std::vector<std::string> get_all_filenames();
 
-	bool compare_bin_files(std::string first_file_s, std::string second_file_s);
-
-	void print_duplicates();
-
-private:
-	std::string first_path;
-
-	std::string second_path;
-
-	std::unordered_set<std::string> checked_files;
-
-	std::map<std::string, std::vector<std::string>> duplicates;
+	bool are_files_equal(std::string first_path_to_file, std::string second_path_to_file);
 
 };

@@ -14,9 +14,8 @@ int main()
     std::cout << "Введите вторую папку для поиска дубликатов > ";
     std::cin >> path_2;
 
-    std::cout << "Далее в каждой строке будут представлены дубликаты файлов" << std::endl;
     FileAnalyzer f{ path_1,path_2 };
-    f.exec();
+    f.print_vector_of_duplicates();
 
     return 0;
 }
