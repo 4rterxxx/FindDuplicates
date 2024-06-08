@@ -70,7 +70,8 @@ bool FileAnalyzer::are_files_equal(std::string first_path_to_file, std::string s
     std::ifstream second_file;
     second_file.open(second_path_to_file, std::ios::binary);
 
-    boost::filesystem::path first_file_in_path_format{ first_path_to_file }, second_file_in_path_format{ second_path_to_file };
+    boost::filesystem::path first_file_in_path_format{ first_path_to_file };
+    boost::filesystem::path second_file_in_path_format{ second_path_to_file };
     if (boost::filesystem::file_size(first_file_in_path_format) != boost::filesystem::file_size(second_file_in_path_format)) {
         first_file.close();
         second_file.close();
