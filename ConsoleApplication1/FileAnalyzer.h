@@ -7,7 +7,7 @@
 #include <unordered_set>
 #include <boost/filesystem.hpp>
 #include <fstream>
-
+#include <exception>
 
 class FileAnalyzer {
 
