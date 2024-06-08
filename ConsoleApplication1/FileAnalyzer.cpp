@@ -26,12 +26,16 @@ std::vector<std::string> FileAnalyzer::get_all_filenames() {
 
     boost::filesystem::directory_iterator end_iter;
     std::vector<std::string> filenames;
-
-    for (boost::filesystem::directory_iterator dir_iter(this->first_directory); dir_iter != end_iter; ++dir_iter) {
-        filenames.push_back(dir_iter->path().string());
+    try {
+        for (boost::filesystem::directory_iterator dir_iter(this->first_directory); dir_iter != end_iter; ++dir_iter) {
+            filenames.push_back(dir_iter->path().string());
+        }
+        for (boost::filesystem::directory_iterator dir_iter(this->second_directory); dir_iter != end_iter; ++dir_iter) {
+            filenames.push_back(dir_iter->path().string());
+        }
     }
-    for (boost::filesystem::directory_iterator dir_iter(this->second_directory); dir_iter != end_iter; ++dir_iter) {
-        filenames.push_back(dir_iter->path().string());
+    catch (std::exception e) {
+        std::cout << "Error in dir names!";
     }
     return filenames;
 }
